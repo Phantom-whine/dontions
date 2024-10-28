@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Donate</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/alpinejs/3.13.5/cdn.min.js" defer></script>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-white min-h-screen flex flex-col">
+    <!-- Navigation -->
+    <nav class="border-b border-gray-100 fixed w-full bg-white z-10">
+        <div class="max-w-5xl mx-auto px-4 h-16 flex items-center justify-between">
+            <div class="text-xl font-medium">Donations</div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="flex-grow flex items-center justify-center px-4 pt-16">
+        <div class="max-w-lg w-full py-16" x-data="{ 
+            totalRaised: 12580,
+            amounts: [
+            { value: 20, link: 'https://donations-payments-xxx.lemonsqueezy.com/buy/0925c91b-97a6-4169-a18b-00b38587955c' },
+            { value: 50, link: 'https://donations-payments-xxx.lemonsqueezy.com/buy/a8f1000b-12fa-4b75-8a29-ccd636b4ab15' },
+            { value: 100, link: 'https://donations-payments-xxx.lemonsqueezy.com/buy/dcbbc63a-22c0-4026-90f5-349b126d30ef' },
+            { value: 200, link: 'https://donations-payments-xxx.lemonsqueezy.com/buy/38c37999-6077-4127-b746-3f6701f656fd' },
+            { value: 500, link: 'https://donations-payments-xxx.lemonsqueezy.com/buy/38b12160-8c0f-4901-ae4f-69efd4fc2463' },
+            { value: 1000, link: 'https://donations-payments-xxx.lemonsqueezy.com/buy/6073973e-9319-44ef-942f-2dac5bfecdbf' }
+        ],
+            formatCurrency(amount) {
+                return new Intl.NumberFormat('en-US', { 
+                    style: 'currency', 
+                    currency: 'USD',
+                    maximumFractionDigits: 0 
+                }).format(amount)
+            }
+        }">
+
+            <!-- Content -->
+            <div class="space-y-12">
+                <div>
+                    <h1 class="text-3xl font-normal text-black mb-3">Support our mission</h1>
+                    <p class="text-gray-400">Choose an amount to donate</p>
+                </div>
+
+                <div class="grid grid-cols-2 gap-4">
+                    <template x-for="amount in amounts" :key="amount.value">
+                        <a 
+                            :href="amount.link"
+                            class="border border-gray-200 rounded-lg p-6 text-center hover:border-black transition-all duration-200 group"
+                        >
+                            <span class="text-lg text-gray-600 group-hover:text-black transition-colors duration-200" 
+                                  x-text="formatCurrency(amount.value)">
+                            </span>
+                        </a>
+                    </template>
+                </div>
+
+                <div class="text-sm text-gray-400 text-center">
+                    Secure payment • Tax-deductible
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="border-t border-gray-100">
+        <div class="max-w-5xl mx-auto px-4 py-12">
+            <div class="mt-12 pt-8 border-t border-gray-100">
+                <div class="text-sm text-gray-400">© 2024 Organization. All rights reserved.</div>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>
